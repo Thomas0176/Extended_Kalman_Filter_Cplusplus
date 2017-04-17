@@ -53,40 +53,40 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
     float vx = x_state(2);
     float vy = x_state(3);
     
-    std::cout << px<< std::endl;
-    std::cout << py<< std::endl;
-    std::cout << vx<< std::endl;
-    std::cout << vy<< std::endl;
+//    std::cout << px<< std::endl;
+//    std::cout << py<< std::endl;
+//    std::cout << vx<< std::endl;
+//    std::cout << vy<< std::endl;
 
     //pre-compute a set of terms to avoid repeated calculation
     float c1 = px*px+py*py;
     float c2 = sqrt(c1);
     float c3 = (c1*c2);
-    std::cout << "before" << std::endl;
+//    std::cout << "before" << std::endl;
 
     //check division by zero
     if(fabs(c1) < 0.0001){
-        std::cout << "CalculateJacobian () - Error - Division by Zero" << std::endl;
+//        std::cout << "CalculateJacobian () - Error - Division by Zero" << std::endl;
         Hj <<    0,    0, 0, 0,
         1e+9, 1e+9, 0, 0,
         0,    0, 0, 0;
-        std::cout << "in" << std::endl;
+//        std::cout << "in" << std::endl;
 
         return Hj;
     }
    
-
-    std::cout << "behind" << std::endl;
-
-    std::cout << c1<< std::endl;
-    std::cout << c2<< std::endl;
-    std::cout << c3<< std::endl;
+//
+//    std::cout << "behind" << std::endl;
+//
+//    std::cout << c1<< std::endl;
+//    std::cout << c2<< std::endl;
+//    std::cout << c3<< std::endl;
 
     //compute the Jacobian matrix
     Hj << (px/c2), (py/c2), 0, 0,
 		  -(py/c1), (px/c1), 0, 0,
 		  py*(vx*py - vy*px)/c3, px*(px*vy - py*vx)/c3, px/c2, py/c2;
-    std::cout << Hj << std::endl;
+//    std::cout << Hj << std::endl;
     return Hj;
     /**
   TODO:

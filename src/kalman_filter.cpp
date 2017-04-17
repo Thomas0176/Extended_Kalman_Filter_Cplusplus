@@ -94,9 +94,9 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
     if ((h0) < 0.0001){ h0=0.0001;}
     
     float h2 = ((px*vx+py*vy) / h0);
-    cout << "h0" << h0 << endl;
-    cout << "h1" << h1 << endl;
-    cout << "h2" << h2 << endl;
+//    cout << "h0" << h0 << endl;
+//    cout << "h1" << h1 << endl;
+//    cout << "h2" << h2 << endl;
     float pi = 3.14159265359;
     if (h1 < -pi){
         h1=h1+2*pi;
